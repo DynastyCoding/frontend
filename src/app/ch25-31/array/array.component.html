@@ -1,0 +1,15 @@
+@for (data of cities; track data) {
+  <h3>{{ data }}</h3>
+}
+
+@for (user of userArray; track user.userName) {
+  <div style="border: 1px solid #ccc; padding: 16px; margin: 8px">
+    <h2>{{ user.userName }}</h2>
+    <p>擁有道具：</p>
+    <ul>
+      @for (prop of user.props; track prop.propsName) {
+        <li>{{ prop.propsName }} 數量:{{ prop.propsAmount }}</li>
+      }
+    </ul>
+  </div>
+}

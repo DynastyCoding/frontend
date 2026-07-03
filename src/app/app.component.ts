@@ -1,10 +1,11 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',//元件的標籤名稱，在 HTML 中以此名稱使用
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterModule],
   templateUrl: './app.component.html',//指定此元件使用的 HTML 檔案路徑
   styleUrl: './app.component.scss'//指定此元件使用的 SCSS 檔案路徑
 })

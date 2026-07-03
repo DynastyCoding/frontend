@@ -1,0 +1,7 @@
+<div class="login-container">
+  <input [(ngModel)]="password" placeholder="請輸入密碼" />
+  <button (click)="login()">登入</button>
+  @if (error) {
+    <p>密碼錯誤，請重新輸入</p>
+  }
+</div>

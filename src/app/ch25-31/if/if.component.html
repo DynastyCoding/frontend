@@ -1,0 +1,23 @@
+@if (isLoggedIn) {
+  <button (click)="toggleLogin()">登出</button>
+  <p>歡迎回來</p>
+} @else {
+  <button (click)="toggleLogin()">登入</button>
+  <p>請先登入</p>
+}
+
+<hr />
+
+<label>請輸入分數:</label>
+<input type="number" [(ngModel)]="score" />
+<p>輸入分數：{{ score }}</p>
+
+@if (score > 90) {
+  <p>優秀</p>
+} @else if (score > 70) {
+  <p>良好</p>
+} @else if (score > 60) {
+  <p>及格</p>
+} @else {
+  <p>不及格</p>
+}
