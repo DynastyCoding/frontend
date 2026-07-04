@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { ApitestComponent } from './ch25-31/apitest/apitest.component';
+import { Ch2124Component } from './practice/binding/binding.component';
 
 
 export const routes: Routes = [
 
-  {path: '',component: ApitestComponent}
+  {path: '',component: Ch2124Component}
 ];

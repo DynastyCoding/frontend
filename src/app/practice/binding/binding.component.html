@@ -1,0 +1,66 @@
+<p>產品名稱： {{ product }}</p>
+<p>價格： {{ price }}</p>
+<p>數量： {{ qty }}</p>
+<p>總金額： {{ price * qty }}</p>
+<hr />
+
+<img [src]="picture" width="200px" />
+<button (click)="changePicture()">切換圖片</button>
+<hr />
+
+<input type="checkbox" (click)="isAgree()" />我同意
+<button [disabled]="!agree">送出</button>
+<hr />
+
+<p [style.color]="wordcolor">我是變色字</p>
+<button (click)="changeColor()">切換顏色</button>
+<hr />
+
+<input type="text" [placeholder]="inputHint" />
+<p [class.highlight]="vip">VIP會員</p>
+<button [disabled]="!vip">專屬優惠</button>
+<button (click)="isVip()">切換VIP狀態</button>
+<hr />
+
+<input (input)="handleInput($event)" placeholder="請輸入" />
+<p>您輸入的是： {{ inputText }}</p>
+<hr />
+
+<p>功德： {{ count }}</p>
+<button (click)="addCount()">功德+1</button>
+<button (click)="reCount()">發送給自己</button>
+<hr />
+
+<input [(ngModel)]="userName" placeholder="請輸入暱稱" />
+<p>您好： {{ userName || "陌生人" }}</p>
+<hr />
+
+<div class="card" style="max-width: 400px; margin: 20px auto; padding: 20px" ;>
+  <div class="card-body">
+    <h4 style="color: red" class="text-center">角色等級計算器</h4>
+    <button
+      style="position: absolute; top: 15px; right: 15px; z-index: 10"
+      (click)="reset()"
+    >
+      重置
+    </button>
+
+    <p>等級：{{ level }}</p>
+    <div class="text-center">
+      <button class="btn btn-success me-2" (click)="levelUp()">升級！</button>
+      <button
+        class="btn btn-danger"
+        (click)="levelDown()"
+        [disabled]="level <= 1"
+      >
+        降級..
+      </button>
+    </div>
+    <p>攻擊力： {{ atk }}</p>
+    <p>防禦力： {{ def }}</p>
+    <p style="color: red">備註：角色等級不能小於1</p>
+    <input type="number" [(ngModel)]="inputLevel" />
+    <button (click)="changeLevel()">修改等級</button>
+    <br />
+  </div>
+</div>
