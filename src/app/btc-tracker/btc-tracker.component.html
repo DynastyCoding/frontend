@@ -1,0 +1,193 @@
+<div class="dashboard-container">
+  <!-- 頂部標題與狀態 -->
+  <div class="header">
+    <div class="glow-icon">⚡</div>
+    <h1 class="glitch-text" data-text="PORTFOLIO TRACKER">PORTFOLIO TRACKER</h1>
+    <div class="subtitle">
+      <span class="pulse-dot"></span> REAL-TIME CRYPTO MONITOR
+    </div>
+
+    <!-- 帥氣的掃描按鈕 -->
+    <button class="scan-btn" (click)="fetchPrices()">
+      <span class="scan-icon">⟳</span> SCAN
+    </button>
+  </div>
+
+  <!-- 動態價格跑馬燈 (已修正語法) -->
+  <div class="market-ticker">
+    <div class="ticker-item">
+      <span class="label">₿ BITCOIN</span>
+      <span class="value" [class.jump-up]="btcPrice > 0">
+        {{ btcPrice | number: "1.2-2" }}
+      </span>
+    </div>
+    <div class="ticker-divider">|</div>
+    <div class="ticker-item">
+      <span class="label">⟠ ETHEREUM</span>
+      <span class="value" [class.jump-up]="ethPrice > 0">
+        {{ ethPrice | number: "1.2-2" }}
+      </span>
+    </div>
+  </div>
+
+  @if (isLoading) {
+    <div class="scanning-line"></div>
+  }
+
+  <!-- 輸入表單 -->
+  <div class="glass-card form-card">
+    <div class="form-grid">
+      <!-- 1. 平台名稱  -->
+      <input
+        type="text"
+        [ngModel]="newHolding.name"
+        (ngModelChange)="newHolding.name = $event"
+        placeholder="Exchange"
+      />
+
+      <!-- 2. 幣種 -->
+      <select [(ngModel)]="newHolding.coin">
+        <option value="BTC">BTC</option>
+        <option value="ETH">ETH</option>
+      </select>
+
+      <!-- 3. 成本價 -->
+      <input
+        type="number"
+        [ngModel]="newHolding.cost"
+        (ngModelChange)="newHolding.cost = $event"
+        placeholder="Cost Price (USD)"
+      />
+
+      <!-- 4. 數量 -->
+      <input
+        type="number"
+        [ngModel]="newHolding.amount"
+        (ngModelChange)="newHolding.amount = $event"
+        placeholder="Amount"
+      />
+    </div>
+    <button class="add-btn" (click)="addHolding()">➕ Add Holding</button>
+  </div>
+
+  <!-- 持倉卡片列 -->
+  <div class="holdings-list">
+    @for (h of holdings; track h.id) {
+      <div class="glass-card holding-item">
+        <div class="h-left">
+          <div class="h-name">{{ h.name }}</div>
+          <div class="h-coin-tag">{{ h.coin }}</div>
+        </div>
+        <div class="h-mid">
+          <div class="h-detail">持有 {{ h.amount }} 顆</div>
+          <div class="h-detail">均價 ${{ h.cost }}</div>
+        </div>
+        <div class="h-right">
+          <div class="h-value">
+            {{
+              (h.coin === "BTC" ? btcPrice : ethPrice) * h.amount
+                | number: "1.2-2"
+            }}
+          </div>
+          <div
+            class="h-profit"
+            [class.is-profit]="
+              ((h.coin === 'BTC' ? btcPrice : ethPrice) - h.cost) * h.amount >=
+              0
+            "
+            [class.is-loss]="
+              ((h.coin === 'BTC' ? btcPrice : ethPrice) - h.cost) * h.amount < 0
+            "
+          >
+            {{
+              ((h.coin === "BTC" ? btcPrice : ethPrice) - h.cost) * h.amount
+                | number: "1.2-2"
+            }}
+            USD
+          </div>
+        </div>
+        <button class="del-btn" (click)="removeHolding(h.id)">✖</button>
+      </div>
+    } @empty {
+      <div class="empty-state glow-text">⚡ 建立你的持倉</div>
+    }
+  </div>
+
+  @if (holdings.length > 0) {
+    <div class="glass-card total-panel">
+      <div class="total-header">
+        <span>📊 總資產概覽</span>
+        <span class="badge">共 {{ holdings.length }} 筆持倉</span>
+      </div>
+
+      <!-- ========== 大總計 ========== -->
+      <div class="total-row">
+        <span>總投入成本</span>
+        <span class="big-number">${{ totalCost | number: "1.2-2" }}</span>
+      </div>
+      <div class="total-row">
+        <span>當前總市值</span>
+        <span class="big-number">${{ totalValue | number: "1.2-2" }}</span>
+      </div>
+      <div
+        class="total-row profit-row"
+        [class.is-profit]="totalProfit >= 0"
+        [class.is-loss]="totalProfit < 0"
+      >
+        <span>總盈虧</span>
+        <span class="big-number"
+          >{{ totalProfit >= 0 ? "+" : ""
+          }}{{ totalProfit | number: "1.2-2" }} USD</span
+        >
+      </div>
+
+      <div class="divider-line"></div>
+
+      <!-- ========== 比特幣 (BTC) 小計 ========== -->
+      <div class="sub-header">₿ 比特幣 (BTC) 持倉統計</div>
+      <div class="total-row sub-row">
+        <span>成本</span>
+        <span>${{ btcTotalCost | number: "1.2-2" }}</span>
+      </div>
+      <div class="total-row sub-row">
+        <span>市值</span>
+        <span>${{ btcTotalValue | number: "1.2-2" }}</span>
+      </div>
+      <div
+        class="total-row profit-row"
+        [class.is-profit]="btcTotalProfit >= 0"
+        [class.is-loss]="btcTotalProfit < 0"
+      >
+        <span>盈虧</span>
+        <span
+          >{{ btcTotalProfit >= 0 ? "+" : ""
+          }}{{ btcTotalProfit | number: "1.2-2" }} USD</span
+        >
+      </div>
+
+      <div class="divider-line"></div>
+
+      <!-- ========== 以太坊 (ETH) 小計 ========== -->
+      <div class="sub-header">⟠ 以太坊 (ETH) 持倉統計</div>
+      <div class="total-row sub-row">
+        <span>成本</span>
+        <span>${{ ethTotalCost | number: "1.2-2" }}</span>
+      </div>
+      <div class="total-row sub-row">
+        <span>市值</span>
+        <span>${{ ethTotalValue | number: "1.2-2" }}</span>
+      </div>
+      <div
+        class="total-row profit-row"
+        [class.is-profit]="ethTotalProfit >= 0"
+        [class.is-loss]="ethTotalProfit < 0"
+      >
+        <span>盈虧</span>
+        <span
+          >{{ ethTotalProfit >= 0 ? "+" : ""
+          }}{{ ethTotalProfit | number: "1.2-2" }} USD</span
+        >
+      </div>
+    </div>
+  }
+</div>

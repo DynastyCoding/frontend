@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FirstComponent } from './first.component';
+import { BtcTrackerComponent } from './btc-tracker.component';
 
-describe('FirstComponent', () => {
-  let component: FirstComponent;
-  let fixture: ComponentFixture<FirstComponent>;
+describe('BtcTrackerComponent', () => {
+  let component: BtcTrackerComponent;
+  let fixture: ComponentFixture<BtcTrackerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FirstComponent]
+      imports: [BtcTrackerComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FirstComponent);
+    fixture = TestBed.createComponent(BtcTrackerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,27 +1,27 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-root',//元件的標籤名稱，在 HTML 中以此名稱使用
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterOutlet,RouterLink],
   templateUrl: './app.component.html',//指定此元件使用的 HTML 檔案路徑
   styleUrl: './app.component.scss'//指定此元件使用的 SCSS 檔案路徑
 })
-export class AppComponent implements OnInit, AfterViewInit{
+export class AppComponent {
   welcomeMessage! : string;
 
-  constructor(){
-    console.log('1. constructor 執行');
+  constructor(private router: Router){}
+
+  goToFirst(){
+    this.router.navigate(['/first']);
   }
 
-  ngOnInit() {
-    console.log('2. ngOnInit 執行');
-    this.welcomeMessage = '歡迎來到 Angular！';
+  goToSecond(){
+    this.router.navigate(['/second']);
   }
 
-  ngAfterViewInit() {
-    console.log('3. ngAfterViewInit 執行');
-  }
 }
