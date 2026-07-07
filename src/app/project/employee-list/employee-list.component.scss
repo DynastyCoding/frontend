@@ -1,0 +1,31 @@
+.tab-content {
+  padding: 1rem 0;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.salary-high {
+  background: #fef3c7;
+  color: #92400e;
+  font-weight: 700;
+}
+
+.archived-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.archived-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+}

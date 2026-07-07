@@ -1,0 +1,27 @@
+<ul class="order-list">
+  @for (order of orders; track order.id) {
+    <li [ngClass]="getRowClass(order)">
+      <span class="customer">#{{ order.id }} {{ order.customer }}</span>
+
+      <span class="badges">
+        <span
+          class="badge"
+          [ngClass]="{
+            'badge-pending': order.status === 'pending',
+            'badge-shipped': order.status === 'shipped',
+            'badge-completed': order.status === 'completed',
+            'badge-cancelled': order.status === 'cancelled',
+          }"
+          >{{ order.status }}</span
+        >
+
+        <span
+          class="badge badge-overdue"
+          [ngClass]="{ hidden: !order.isOverdue }"
+        >
+          overdue
+        </span>
+      </span>
+    </li>
+  }
+</ul>
