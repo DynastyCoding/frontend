@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>{{ data.animal }}</h2>
+
+<mat-dialog-content>
+  <p>請輸入 {{ data.name }}</p>
+  <mat-form-field>
+    <mat-label>{{ data.name }}</mat-label>
+    <input matInput [(ngModel)]="inputValue" />
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">取消</button>
+  <button mat-button (click)="onSubmit()">確定</button>
+</mat-dialog-actions>
