@@ -1,5 +1,18 @@
 <!--<button mat-raised-button (click)="showDialog()">開啟 Dialog</button>
 <router-outlet></router-outlet>-->
 
+<!-- 頂部導航 (不管去哪一頁都要有) -->
 <app-header></app-header>
-<app-product-list></app-product-list>
+
+<!-- 側邊導覽選單 (永遠存在) -->
+<app-sidenavmenu></app-sidenavmenu>
+
+<!-- 路由插槽 (頁面會依照網址自動切換顯示在這裡) -->
+<router-outlet></router-outlet>
+
+<!-- 全站載入轉圈圈 (作為全域動畫，獨立放在最下層) -->
+<!--@if (loading$ | async) -->
+@if (loading()) {
+  <div class="overlay"></div>
+  <mat-spinner [diameter]="70"></mat-spinner>
+}

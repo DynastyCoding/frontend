@@ -8,11 +8,12 @@ import { DialogComponent } from './ch32/dialog/dialog.component';
 import { SynchronousComponent } from './ch32/synchronous/synchronous.component';
 import { HeaderComponent } from './ch32/subscribe/header/header.component';
 import { ProductListComponent } from './ch32/subscribe/product-list/product-list.component';
+import { CartComponent } from './ch32/cart/cart.component';
 
 
 export const routes: Routes = [
 
-  {path: '', redirectTo:'/angularmaterial', pathMatch: 'full'},
+  {path: '', redirectTo:'/tc-tracker', pathMatch: 'full'},
   {path: 'btc-tracker', component: BtcTrackerComponent},
   {path: 'angularmaterial', component:AngularmaterialComponent},
   {path: 'ngclass', component:NgclassComponent},
@@ -21,5 +22,6 @@ export const routes: Routes = [
   {path: 'dialog', component:DialogComponent},
   {path: 'synchronous', component: SynchronousComponent},
   {path: 'header', component: HeaderComponent},
-  {path: 'productlist', component: ProductListComponent}
+  {path: 'productlist', component: ProductListComponent},
+  {path: 'cart', component: CartComponent}
 ];
