@@ -9,6 +9,7 @@ import { SynchronousComponent } from './ch32/synchronous/synchronous.component';
 import { HeaderComponent } from './ch32/subscribe/header/header.component';
 import { ProductListComponent } from './ch32/subscribe/product-list/product-list.component';
 import { CartComponent } from './ch32/cart/cart.component';
+import { DrinkOrderComponent } from './ch32/drink-order/drink-order.component';
 
 
 export const routes: Routes = [
@@ -23,5 +24,6 @@ export const routes: Routes = [
   {path: 'synchronous', component: SynchronousComponent},
   {path: 'header', component: HeaderComponent},
   {path: 'productlist', component: ProductListComponent},
-  {path: 'cart', component: CartComponent}
+  {path: 'cart', component: CartComponent},
+  {path: 'drink-order', component:DrinkOrderComponent},
 ];

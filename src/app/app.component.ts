@@ -24,6 +24,12 @@ import { DialogComponent } from './ch32/dialog/dialog.component';
 import { HeaderComponent } from "./ch32/subscribe/header/header.component";
 import { ProductListComponent } from "./ch32/subscribe/product-list/product-list.component";
 import { SideNavMenuComponent } from './components/sidenavmenu/sidenavmenu.component';
+
+//動態欄位
+import { FormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 @Component({
   selector: 'app-root',//元件的標籤名稱，在 HTML 中以此名稱使用
   standalone: true,
@@ -32,7 +38,8 @@ import { SideNavMenuComponent } from './components/sidenavmenu/sidenavmenu.compo
             RouterOutlet,
             MatProgressSpinnerModule,
             CommonModule,
-            SideNavMenuComponent
+            SideNavMenuComponent,
+            ReactiveFormsModule
           ],
   templateUrl: './app.component.html',//指定此元件使用的 HTML 檔案路徑
   styleUrl: './app.component.scss'//指定此元件使用的 SCSS 檔案路徑
@@ -71,5 +78,15 @@ export class AppComponent implements OnInit{
     //this.loading$ = this.LoadingService.loading$;
     this.loading = this.LoadingService.loading;
   }
+
+  fb = inject (FormBuilder);
+
+  form = this.fb.group({
+    surveyTitle: ['', Validators.required],
+
+    questions: this.fb.array([])
+  });
+
+
 
 }

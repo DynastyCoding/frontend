@@ -1,0 +1,23 @@
+<div class="order-box">
+  <h3>甜度(單選)</h3>
+  <mat-radio-group [(ngModel)]="selectedSweetness">
+    @for (opt of sweetnessOptions; track opt.value) {
+      <mat-radio-button [value]="opt.label">
+        {{ opt.label }}
+      </mat-radio-button>
+    }
+  </mat-radio-group>
+
+  <h3>加料(可複選)</h3>
+  @for (topping of toppings; track topping.label) {
+    <mat-checkbox [(ngModel)]="topping.checked">
+      {{ topping.label }}
+    </mat-checkbox>
+  }
+
+  <p class="summary">
+    甜度：{{ selectedSweetness }}， 加料：{{ selectedToppingsText }}
+  </p>
+</div>
+
+<div class="box"></div>
