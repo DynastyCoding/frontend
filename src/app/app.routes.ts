@@ -1,5 +1,5 @@
+import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
-import { BtcTrackerComponent } from './project/btc-tracker/btc-tracker.component';
 import { AngularmaterialComponent } from './ch32/angularmaterial/angularmaterial.component';
 import { NgclassComponent } from './ch32/ngclass/ngclass.component';
 import { MatLabComponent } from './ch32/mat-lab/mat-lab.component';
@@ -10,12 +10,15 @@ import { HeaderComponent } from './ch32/subscribe/header/header.component';
 import { ProductListComponent } from './ch32/subscribe/product-list/product-list.component';
 import { CartComponent } from './ch32/cart/cart.component';
 import { DrinkOrderComponent } from './ch32/drink-order/drink-order.component';
+import { Ch1924Component } from './ch19-22/ch19-24.component';
+import { BtcTrackerComponent } from './project/btc-tracker/btc-tracker.component';
+import { NotFoundComponent } from './ch23-24/routing/not-found/not-found.component';
+import { PractComponent } from './practice/pract/pract.component';
 
 
 export const routes: Routes = [
+  {path: '', redirectTo:'/btc-tracker', pathMatch: 'full'},
 
-  {path: '', redirectTo:'/tc-tracker', pathMatch: 'full'},
-  {path: 'btc-tracker', component: BtcTrackerComponent},
   {path: 'angularmaterial', component:AngularmaterialComponent},
   {path: 'ngclass', component:NgclassComponent},
   {path: 'mat-lab', component:MatLabComponent},
@@ -26,4 +29,9 @@ export const routes: Routes = [
   {path: 'productlist', component: ProductListComponent},
   {path: 'cart', component: CartComponent},
   {path: 'drink-order', component:DrinkOrderComponent},
+  {path: 'app-ch19-24', component: Ch1924Component},
+  {path: 'btc-tracker', component: BtcTrackerComponent},
+  {path: 'pract', component:PractComponent},
+
+  {path: '**', component: NotFoundComponent}
 ];

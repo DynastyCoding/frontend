@@ -16,7 +16,7 @@ interface Holding {
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './btc-tracker.component.html',
-  styleUrl: './btc-tracker.component.scss'
+  styleUrl:'./btc-tracker.component.scss'
 })
 export class BtcTrackerComponent implements OnInit {
   btcPrice: number = 0;
