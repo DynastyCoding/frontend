@@ -1,0 +1,25 @@
+<div class="weather-container">
+  <h1 class="title">🌤️ 中央氣象局 - 即時天氣資訊</h1>
+
+  <div class="card-grid">
+    <!-- 使用 @for 迴圈把資料一筆一筆畫出來 -->
+    @for (item of weatherData(); track item) {
+      <div class="weather-card">
+        <div class="location">{{ item.locationName }}</div>
+        <div class="temp">
+          <span class="label">溫度</span>
+          <!-- 氣象局有些資料是 null，用 || 給預設值 -->
+          <span class="value">{{ item.temp || "--" }}°C</span>
+        </div>
+        <div class="weather">
+          <span class="label">天氣狀態</span>
+          <span class="value">{{ item.weather || "觀測中" }}</span>
+        </div>
+        <div class="humidity">
+          <span class="label">濕度</span>
+          <span class="value">{{ item.humidity || "--" }}%</span>
+        </div>
+      </div>
+    }
+  </div>
+</div>

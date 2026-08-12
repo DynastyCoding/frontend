@@ -34,8 +34,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   selector: 'app-root',//元件的標籤名稱，在 HTML 中以此名稱使用
   standalone: true,
   imports: [MatButtonModule,
-            HeaderComponent,
             RouterOutlet,
+            HeaderComponent,
             MatProgressSpinnerModule,
             CommonModule,
             SideNavMenuComponent,
@@ -86,7 +86,5 @@ export class AppComponent implements OnInit{
 
     questions: this.fb.array([])
   });
-
-
 
 }

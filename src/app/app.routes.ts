@@ -14,6 +14,10 @@ import { Ch1924Component } from './ch19-22/ch19-24.component';
 import { BtcTrackerComponent } from './project/btc-tracker/btc-tracker.component';
 import { NotFoundComponent } from './ch23-24/routing/not-found/not-found.component';
 import { PractComponent } from './practice/pract/pract.component';
+import { FirstComponent } from './practice/first/first.component';
+import { SecondComponent } from './practice/second/second.component';
+import { ResumeComponent } from './project/resume/resume.component';
+import { WeatherComponent } from './weather/weather.component';
 
 
 export const routes: Routes = [
@@ -32,6 +36,10 @@ export const routes: Routes = [
   {path: 'app-ch19-24', component: Ch1924Component},
   {path: 'btc-tracker', component: BtcTrackerComponent},
   {path: 'pract', component:PractComponent},
+  {path: 'First', component: FirstComponent },
+  {path: 'Second', component: SecondComponent },
+  {path: 'resume', component: ResumeComponent},
+  {path: 'weather', component: WeatherComponent},
 
   {path: '**', component: NotFoundComponent}
 ];

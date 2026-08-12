@@ -1,0 +1,8 @@
+<h2>這是First的 HTML頁面</h2>
+<input type="text" [(ngModel)]="parentName" />
+<p>{{ parentName }}</p>
+
+<hr />
+<!-- 頁面B只是寫在這個 HTML 標籤裡，它不是一個新網址 -->
+
+<app-second [value]="parentName"></app-second>

@@ -1,74 +1,209 @@
-.resume{
-  display: flex;
-  min-height: 100vh;
+/* 1. 全站背景與字體重置 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-.sidebar{
-  width: 280px;
-  background: #1a5c5c;
-  color: white;
-  padding: 40px 24px;
+
+body {
+  background-color: #050a14; /* 極深海軍藍 */
+  font-family: 'Inter', 'Roboto', 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 30px;
+  /* 加入科幻網格背景 */
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* 2. 履歷主容器 (毛玻璃科技面板) */
+.resume {
+  display: flex;
+  max-width: 1000px;
+  width: 100%;
+  min-height: 80vh;
+  background: rgba(13, 25, 48, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+/* 3. 科技裝飾線 (左上角與右下角) */
+.resume::before, .resume::after {
+  content: '';
+  position: absolute;
+  width: 40px; height: 40px;
+  border-color: #00f0ff;
+  border-style: solid; border-width: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+.resume::before { top: 10px; left: 10px; border-top-width: 2px; border-left-width: 2px; }
+.resume::after { bottom: 10px; right: 10px; border-bottom-width: 2px; border-right-width: 2px; }
+
+/* 4. 側邊欄 (深色科技面板) */
+.sidebar {
+  width: 300px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 40px 30px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  border-right: 1px solid rgba(0, 240, 255, 0.15);
+  flex-shrink: 0;
 }
-.avatar{
+
+/* 5. 大頭貼與標題 */
+.avatar {
   width: 120px; height: 120px;
-  border-radius: 50%; background: #5eada0;
-  border: 4px solid white;
-  display: flex; align-items: center;
-  justify-content: center; font-size: 2.5rem;
-}
-.job-title{color: #a7d9d0; font-size: 0.9rem;}
-.content{background: #f8fffe; padding: 40px;}
-.section-title{
-  color: #1a5c5c;
-  border-bottom: 2px solid #5eada0;
-  padding-bottom: 8px; margin-bottom: 16px;
+  border-radius: 50%;
+  background: #0f172a;
+  border: 2px solid #00f0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #00f0ff;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+  margin-bottom: 20px;
+  align-self: center;
 }
 
-.bar{
-  height: 8px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 4px;
+.name {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  align-self: center;
+}
+
+.job-title {
+  color: #00f0ff;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  align-self: center;
+  background: rgba(0, 240, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+/* 6. 聯絡資訊 */
+.contact {
+  width: 100%;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  margin-bottom: 30px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 20px;
+}
+.contact p { margin-bottom: 8px; }
+
+/* 7. 技能條 (科技感) */
+.skills { width: 100%; }
+.skill-item {
+  margin-bottom: 16px;
+}
+.skill-item span {
+  display: block;
+  color: #e2e8f0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
   overflow: hidden;
+  border: 1px solid rgba(0, 240, 255, 0.1);
 }
 
-.fill{
+.fill {
   height: 100%;
-  background: #5eada0;
+  background: linear-gradient(90deg, #00f0ff, #0066ff);
   width: 0;
   animation: growBar 1.2s ease forwards;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
 }
 
-@keyframes growBar{
-  to {width: var(--target);}
+@keyframes growBar { to { width: var(--target); } }
+.fill-40 { --target: 40%; }
+.fill-30 { --target: 30%; }
+.fill-20 { --target: 20%; }
+.fill-35 { --target: 35%; }
+
+/* 8. 主內容區 */
+.content {
+  flex-grow: 1;
+  padding: 40px 50px;
+  color: #e2e8f0;
 }
 
-.fill-40{--target: 40%; animation-delay: 0.2s;}
-.fill-30{--target: 30%; animation-delay: 0.4s;}
-.fill-20{--target: 20%; animation-delay: 0.6s;}
-.fill-35{--target: 35%; animation-delay: 0.6s;}
+/* 9. 區塊標題 */
+.section-title {
+  color: #00f0ff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
 
-.timeline{
+.about p {
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* 10. 時間軸 (科技腳步) */
+.timeline {
   position: relative;
-  padding-left: 32px;
+  padding-left: 30px;
 }
-
 .timeline::before {
   content: '';
   position: absolute;
-  left: 8px; top: 0; bottom: 0;
-  width: 2px;
-  background: #c8e6e3;
+  left: 6px; top: 0; bottom: 0;
+  width: 1px;
+  background: rgba(0, 240, 255, 0.3);
 }
 .timeline-dot {
   position: absolute;
-  left: -28px; top: 6px;
-  width: 14px; height: 14px;
+  left: -26px; top: 4px;
+  width: 10px; height: 10px;
   border-radius: 50%;
-  background: #5eada0;
+  background: #00f0ff;
+  box-shadow: 0 0 10px #00f0ff;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 25px;
+  transition: transform 0.2s;
 }
 .timeline-item:hover {
-  transform: translateX(4px);
-  transition: transform 0.2s;
+  transform: translateX(6px);
+}
+.timeline-item h4 {
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.timeline-item p {
+  color: #94a3b8;
+  font-size: 0.9rem;
 }

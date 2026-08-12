@@ -1,46 +1,284 @@
-<div class="resume">
-  <aside class="sidebar">
-    <div class="avatar">陳</div>
-    <h2 class="name">陳彥伍</h2>
-    <p class="job-title">全端工程師</p>
-    <div class="contact">
-      <p>Email: phantom4v&#64;gmail.com</p>
-      <p>Tel: 0919-120537</p>
-    </div>
-    <div class="skills">
-      <div class="skill-item">
-        <span>JAVA</span>
-        <div class="bar"><div class="fill fill-40"></div></div>
-      </div>
-      <div class="skill-item">
-        <span>HTML</span>
-        <div class="bar"><div class="fill fill-30"></div></div>
-      </div>
-      <div class="skill-item">
-        <span>CSS</span>
-        <div class="bar"><div class="fill fill-20"></div></div>
-      </div>
-      <div class="skill-item">
-        <span>TYPESCRIPT</span>
-        <div class="bar"><div class="fill fill-35"></div></div>
-      </div>
-    </div>
-  </aside>
-  <main class="content">
-    <section class="about">
-      <h3 class="section-title">關於我</h3>
-      <p>討厭前端開發 喜歡後端開發</p>
-    </section>
-    <section class="experience">
-      <h3 class="section-title">工作經歷</h3>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <h4>全端工程師</h4>
-          <p>還沒有工作</p>
-          <p>負責學前端中</p>
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>賽博履歷 - 陳彥伍</title>
+    <!-- 引入現代字體 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* 貼上上面給的那一大段 CSS */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #050a14;
+        font-family: "Inter", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 30px;
+        background-image:
+          linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+        background-size: 30px 30px;
+      }
+      .resume {
+        display: flex;
+        max-width: 1000px;
+        width: 100%;
+        min-height: 80vh;
+        background: rgba(13, 25, 48, 0.75);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 240, 255, 0.2);
+        border-radius: 12px;
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.8),
+          0 0 30px rgba(0, 240, 255, 0.1);
+        overflow: hidden;
+        position: relative;
+      }
+      .resume::before,
+      .resume::after {
+        content: "";
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border-color: #00f0ff;
+        border-style: solid;
+        border-width: 0;
+        pointer-events: none;
+        z-index: 10;
+      }
+      .resume::before {
+        top: 10px;
+        left: 10px;
+        border-top-width: 2px;
+        border-left-width: 2px;
+      }
+      .resume::after {
+        bottom: 10px;
+        right: 10px;
+        border-bottom-width: 2px;
+        border-right-width: 2px;
+      }
+      .sidebar {
+        width: 300px;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 40px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        border-right: 1px solid rgba(0, 240, 255, 0.15);
+        flex-shrink: 0;
+      }
+      .avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: #0f172a;
+        border: 2px solid #00f0ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: #00f0ff;
+        font-weight: bold;
+        box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+        margin-bottom: 20px;
+        align-self: center;
+      }
+      .name {
+        font-size: 1.5rem;
+        color: #ffffff;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+        align-self: center;
+      }
+      .job-title {
+        color: #00f0ff;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        align-self: center;
+        background: rgba(0, 240, 255, 0.1);
+        padding: 4px 12px;
+        border-radius: 20px;
+        border: 1px solid rgba(0, 240, 255, 0.3);
+      }
+      .contact {
+        width: 100%;
+        color: #94a3b8;
+        font-size: 0.85rem;
+        margin-bottom: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 20px;
+      }
+      .contact p {
+        margin-bottom: 8px;
+      }
+      .skills {
+        width: 100%;
+      }
+      .skill-item {
+        margin-bottom: 16px;
+      }
+      .skill-item span {
+        display: block;
+        color: #e2e8f0;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+      }
+      .bar {
+        height: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+        overflow: hidden;
+        border: 1px solid rgba(0, 240, 255, 0.1);
+      }
+      .fill {
+        height: 100%;
+        background: linear-gradient(90deg, #00f0ff, #0066ff);
+        width: 0;
+        animation: growBar 1.2s ease forwards;
+        box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+      }
+      @keyframes growBar {
+        to {
+          width: var(--target);
+        }
+      }
+      .fill-40 {
+        --target: 40%;
+      }
+      .fill-30 {
+        --target: 30%;
+      }
+      .fill-20 {
+        --target: 20%;
+      }
+      .fill-35 {
+        --target: 35%;
+      }
+      .content {
+        flex-grow: 1;
+        padding: 40px 50px;
+        color: #e2e8f0;
+      }
+      .section-title {
+        color: #00f0ff;
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+        padding-bottom: 8px;
+        margin-bottom: 20px;
+        display: inline-block;
+      }
+      .about p {
+        color: #94a3b8;
+        line-height: 1.6;
+        margin-bottom: 30px;
+      }
+      .timeline {
+        position: relative;
+        padding-left: 30px;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: rgba(0, 240, 255, 0.3);
+      }
+      .timeline-dot {
+        position: absolute;
+        left: -26px;
+        top: 4px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #00f0ff;
+        box-shadow: 0 0 10px #00f0ff;
+      }
+      .timeline-item {
+        position: relative;
+        margin-bottom: 25px;
+        transition: transform 0.2s;
+      }
+      .timeline-item:hover {
+        transform: translateX(6px);
+      }
+      .timeline-item h4 {
+        color: #ffffff;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+      .timeline-item p {
+        color: #94a3b8;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="resume">
+      <aside class="sidebar">
+        <div class="avatar">陳</div>
+        <h2 class="name">陳彥伍</h2>
+        <p class="job-title">全端工程師</p>
+        <div class="contact">
+          <p>Email: phantom4v at gmail.com</p>
+          <p>Tel: 0919-120537</p>
         </div>
-      </div>
-    </section>
-  </main>
-</div>
+        <div class="skills">
+          <div class="skill-item">
+            <span>JAVA</span>
+            <div class="bar"><div class="fill fill-40"></div></div>
+          </div>
+          <div class="skill-item">
+            <span>HTML</span>
+            <div class="bar"><div class="fill fill-30"></div></div>
+          </div>
+          <div class="skill-item">
+            <span>CSS</span>
+            <div class="bar"><div class="fill fill-20"></div></div>
+          </div>
+          <div class="skill-item">
+            <span>TYPESCRIPT</span>
+            <div class="bar"><div class="fill fill-35"></div></div>
+          </div>
+        </div>
+      </aside>
+      <main class="content">
+        <section class="about">
+          <h3 class="section-title">關於我</h3>
+          <p>
+            我就爛。討厭前端開發，寧可寫後端邏輯也不想跟 CSS 打交道。<br />
+            目標是成為一個能靠後端技術吃遍天下的工程師。
+          </p>
+        </section>
+        <section class="experience">
+          <h3 class="section-title">工作經歷</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <h4>全端工程師 (培訓中)</h4>
+              <p>目前還沒正式工作，全力刷題跟寫專案中。</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
