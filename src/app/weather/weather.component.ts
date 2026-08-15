@@ -9,21 +9,57 @@ import { CommonModule } from '@angular/common';
   templateUrl: './weather.component.html',
   styleUrl: './weather.component.scss'
 })
-
 export class WeatherComponent implements OnInit {
-  private http = inject(HttpClient); // 注入 HttpClient
-
-  // 用來存放 API 回傳的資料
+  private http = inject(HttpClient);
   weatherData = signal<any[]>([]);
 
-  // API 網址 (題目給的)
-  private apiUrl = 'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-065?Authorization=CWA-69B5A9F7-1D8D-495E-A1F2-C160E39B4D44&limit=10&format=JSON';
+  private apiUrl = 'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWA-58469623-B2D4-4A61-87AF-9B5256D5D34F';
 
-  ngOnInit(){
-    // 1. 使用題目要求的 getApi 方式呼叫 (若沒另寫 service，可用 this.http.get)
+  ngOnInit() {
     this.http.get(this.apiUrl).subscribe({
-      next: (res: any) => {/*處理你拿回來的資料*/},
-      error: (err) => {console.error('API抓取失敗', err);}
+      next: (res: any) => {
+        const locations = res?.records?.location || [];
+
+        const mapped = locations.map((loc: any) => {
+          const elements = loc.weatherElement || [];
+
+          // 找最高溫 (MaxT)
+          const maxTempElem = elements.find((e: any) => e.elementName === 'MaxT');
+          let temp = '--';
+          if (maxTempElem?.time?.[0]?.parameter?.parameterName) {
+            temp = maxTempElem.time[0].parameter.parameterName;
+          }
+
+          // 找天氣現象 (Wx)
+          const wxElem = elements.find((e: any) => e.elementName === 'Wx');
+          let weather = '觀測中';
+          if (wxElem?.time?.[0]?.parameter?.parameterName) {
+            weather = wxElem.time[0].parameter.parameterName;
+          }
+
+          // 找降雨機率 (PoP)
+          const popElem = elements.find((e: any) => e.elementName === 'PoP');
+          let pop = '0';
+          if (popElem?.time?.[0]?.parameter?.parameterName) {
+            pop = popElem.time[0].parameter.parameterName;
+          }
+
+          return {
+            locationName: loc.locationName,
+            temp: temp,
+            weather: weather,
+            humidity: pop
+          };
+        });
+
+        this.weatherData.set(mapped);
+      },
+      error: (err) => {
+        console.error('API抓取失敗', err);
+        this.weatherData.set([
+          { locationName: '資料載入失敗', temp: '--', weather: '請檢查 API', humidity: '--' }
+        ]);
+      }
     });
   }
 }
