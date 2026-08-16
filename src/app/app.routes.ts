@@ -18,6 +18,7 @@ import { FirstComponent } from './practice/first/first.component';
 import { SecondComponent } from './practice/second/second.component';
 import { ResumeComponent } from './project/resume/resume.component';
 import { WeatherComponent } from './weather/weather.component';
+import { InterfaceComponent } from './ch25-31/interface/interface.component';
 
 
 export const routes: Routes = [
@@ -40,6 +41,7 @@ export const routes: Routes = [
   {path: 'Second', component: SecondComponent },
   {path: 'resume', component: ResumeComponent},
   {path: 'weather', component: WeatherComponent},
+  {path: 'interface', component: InterfaceComponent},
 
   {path: '**', component: NotFoundComponent}
 ];
