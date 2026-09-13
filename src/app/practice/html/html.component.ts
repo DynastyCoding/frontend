@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-html',
   imports: [],
   templateUrl: './html.component.html',
-  styleUrl: './html.component.scss'
 })
 export class HtmlComponent {
 

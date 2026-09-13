@@ -17,7 +17,7 @@ import { PractComponent } from './practice/pract/pract.component';
 import { FirstComponent } from './practice/first/first.component';
 import { SecondComponent } from './practice/second/second.component';
 import { ResumeComponent } from './project/resume/resume.component';
-import { WeatherComponent } from './weather/weather.component';
+import { WeatherComponent } from './project/weather/weather.component';
 import { InterfaceComponent } from './ch25-31/interface/interface.component';
 
 

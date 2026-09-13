@@ -1,4 +1,4 @@
-import { ExampleService } from './../../@services/example.service';
+import { ExampleService } from '../../../services/example.service';
 import { Component, Input } from '@angular/core';
 import { inject } from '@angular/core';
 

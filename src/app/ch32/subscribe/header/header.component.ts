@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-// 1. 你的檔案在 ch32 裡面，必須往上退到 app，再進 @services
-import { CartService } from '../../../@services/cart-service.service';
+// 1. 你的. 您的文件位於 ch32 內，必須向上返回到 app，然後進入 services
+import { CartService } from '../../../../services/cart.service';
 
 @Component({
   selector: 'app-header',

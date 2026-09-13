@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HttpClientService } from '../../@http-service/http-client.service';
+import { HttpClientService } from '../../../services/http.service';
 
 @Component({
   selector: 'app-apitest',
