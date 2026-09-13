@@ -1,4 +1,4 @@
-import { LoadingService } from './@service/loading.service';
+import { LoadingService } from './core/services/loading.service';
 import { Observable } from 'rxjs';
 
 // Angular 核心
@@ -20,10 +20,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // 自己寫的 Standalone 獨立元件
-import { DialogComponent } from './ch32/dialog/dialog.component';
-import { HeaderComponent } from "./ch32/subscribe/header/header.component";
-import { ProductListComponent } from "./ch32/subscribe/product-list/product-list.component";
-import { SideNavMenuComponent } from './components/sidenavmenu/sidenavmenu.component';
+import { DialogComponent } from './angular-material/dialog/dialog.component';
+import { HeaderComponent } from "./angular-material/subscribe/header/header.component";
+import { ProductListComponent } from "./angular-material/subscribe/product-list/product-list.component";
+import { SidenavmenuComponent } from './angular-material/sidenavmenu/sidenavmenu.component';
 
 //動態欄位
 import { FormBuilder, Validators } from '@angular/forms';
@@ -38,7 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
             HeaderComponent,
             MatProgressSpinnerModule,
             CommonModule,
-            SideNavMenuComponent,
+            SidenavmenuComponent,
             ReactiveFormsModule
           ],
   templateUrl: './app.component.html',//指定此元件使用的 HTML 檔案路徑

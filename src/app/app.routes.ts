@@ -1,47 +1,115 @@
-import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
-import { AngularmaterialComponent } from './ch32/angularmaterial/angularmaterial.component';
-import { NgclassComponent } from './ch32/ngclass/ngclass.component';
-import { MatLabComponent } from './ch32/mat-lab/mat-lab.component';
-import { EmployeeListComponent } from './project/employee-list/employee-list.component';
-import { DialogComponent } from './ch32/dialog/dialog.component';
-import { SynchronousComponent } from './ch32/synchronous/synchronous.component';
-import { HeaderComponent } from './ch32/subscribe/header/header.component';
-import { ProductListComponent } from './ch32/subscribe/product-list/product-list.component';
-import { CartComponent } from './ch32/cart/cart.component';
-import { DrinkOrderComponent } from './ch32/drink-order/drink-order.component';
-import { Ch1924Component } from './ch19-22/ch19-24.component';
-import { BtcTrackerComponent } from './project/btc-tracker/btc-tracker.component';
-import { NotFoundComponent } from './ch23-24/routing/not-found/not-found.component';
-import { PractComponent } from './practice/pract/pract.component';
-import { FirstComponent } from './practice/first/first.component';
-import { SecondComponent } from './practice/second/second.component';
-import { ResumeComponent } from './project/resume/resume.component';
-import { WeatherComponent } from './project/weather/weather.component';
-import { InterfaceComponent } from './ch25-31/interface/interface.component';
 
+// Angular Material Components
+import { AngularmaterialComponent } from './angular-material/angularmaterial/angularmaterial.component';
+import { NgclassComponent } from './angular-material/ngclass/ngclass.component';
+import { MatLabComponent } from './angular-material/mat-lab/mat-lab.component';
+import { DrinkOrderComponent } from './angular-material/drink-order/drink-order.component';
+import { SynchronousComponent } from './angular-material/synchronous/synchronous.component';
+import { DialogComponent } from './angular-material/dialog/dialog.component';
+import { HeaderComponent } from './angular-material/subscribe/header/header.component';
+import { ProductListComponent } from './angular-material/subscribe/product-list/product-list.component';
+import { CartComponent } from './angular-material/cart/cart.component';
+import { RegisterFormComponent } from './angular-material/register-form/register-form.component';
+import { SidenavmenuComponent } from './angular-material/sidenavmenu/sidenavmenu.component';
+
+// Binding Components
+import { BindingComponent } from './binding/1/binding.component';
+import { Binding2Component } from './binding/2/binding.component';
+
+// Data Passing Components
+import { InputAComponent } from './data-passing/io-passing/input/input-a.component';
+import { InputBComponent } from './data-passing/io-passing/input/input-b.component';
+import { OutputAComponent } from './data-passing/io-passing/output/output-a.component';
+import { OutputBComponent } from './data-passing/io-passing/output/output-b.component';
+import { FirstComponent } from './data-passing/route-sharing/first/first.component';
+import { SecondComponent } from './data-passing/route-sharing/second/second.component';
+
+// HTTP Components
+import { ApiTestComponent } from './http/api-test/api-test.component';
+import { DashboardComponent } from './http/cookie/dashboard/dashboard.component';
+import { LoginComponent } from './http/cookie/login/login.component';
+
+// Project Components
+import { EmployeeListComponent } from './project/employee-list/employee-list.component';
+import { ResumeComponent } from './project/resume/resume.component';
+import { ShopComponent } from './project/shop/shop.component';
+import { WeatherComponent } from './project/weather/weather.component';
+import { BtcTrackerComponent } from './project/btc-tracker/btc-tracker.component';
+
+// Routing Components
+import { HomeComponent } from './routing/home/home.component';
+import { NewsComponent } from './routing/home/news/news.component';
+import { NotfoundComponent } from './routing/notfound/notfound.component';
+import { DashboardComponent as RoutingDashboardComponent } from './routing/dashboard/dashboard.component';
+import { FirstComponent as RoutingFirstComponent } from './routing/components/first/first.component';
+import { SecondComponent as RoutingSecondComponent } from './routing/components/second/second.component';
+import { ChildAComponent } from './routing/components/first/child-a/child-a.component';
+import { AboutComponent } from './routing/components/about/about.component';
+import { LoginComponent as RoutingLoginComponent } from './routing/login/login.component';
+import { RoutingDemoComponent } from './routing/routing-demo.component';
+import { DashboardComponent as LoginDashboardComponent } from './routing/components/login/dashboard/dashboard.component';
+import { LoginComponent as LoginLoginComponent } from './routing/components/login/login/login.component';
 
 export const routes: Routes = [
   {path: '', redirectTo:'/btc-tracker', pathMatch: 'full'},
 
-  {path: 'angularmaterial', component:AngularmaterialComponent},
-  {path: 'ngclass', component:NgclassComponent},
-  {path: 'mat-lab', component:MatLabComponent},
-  {path: 'employee-list', component:EmployeeListComponent},
-  {path: 'dialog', component:DialogComponent},
+  // Angular Material
+  {path: 'angularmaterial', component: AngularmaterialComponent},
+  {path: 'ngclass', component: NgclassComponent},
+  {path: 'mat-lab', component: MatLabComponent},
+  {path: 'drink-order', component: DrinkOrderComponent},
   {path: 'synchronous', component: SynchronousComponent},
+  {path: 'dialog', component: DialogComponent},
   {path: 'header', component: HeaderComponent},
   {path: 'productlist', component: ProductListComponent},
   {path: 'cart', component: CartComponent},
-  {path: 'drink-order', component:DrinkOrderComponent},
-  {path: 'app-ch19-24', component: Ch1924Component},
-  {path: 'btc-tracker', component: BtcTrackerComponent},
-  {path: 'pract', component:PractComponent},
-  {path: 'First', component: FirstComponent },
-  {path: 'Second', component: SecondComponent },
-  {path: 'resume', component: ResumeComponent},
-  {path: 'weather', component: WeatherComponent},
-  {path: 'interface', component: InterfaceComponent},
+  {path: 'register-form', component: RegisterFormComponent},
+  {path: 'sidenavmenu', component: SidenavmenuComponent},
 
-  {path: '**', component: NotFoundComponent}
+  // Binding
+  {path: 'app-ch19-24', component: BindingComponent},
+  {path: 'binding2', component: Binding2Component},
+
+  // Data Passing
+  {path: 'input-a', component: InputAComponent},
+  {path: 'input-b', component: InputBComponent},
+  {path: 'output-a', component: OutputAComponent},
+  {path: 'output-b', component: OutputBComponent},
+  {path: 'route-sharing-first', component: FirstComponent},
+  {path: 'route-sharing-second', component: SecondComponent},
+
+  // HTTP
+  {path: 'api-test', component: ApiTestComponent},
+  {path: 'cookie-dashboard', component: DashboardComponent},
+  {path: 'cookie-login', component: LoginComponent},
+
+  // Project
+  {path: 'employee-list', component: EmployeeListComponent},
+  {path: 'resume', component: ResumeComponent},
+  {path: 'shop', component: ShopComponent},
+  {path: 'weather', component: WeatherComponent},
+  {path: 'btc-tracker', component: BtcTrackerComponent},
+
+  // Routing
+  {path: 'First', component: RoutingFirstComponent},
+  {path: 'Second', component: RoutingSecondComponent},
+  {path: 'child-a', component: ChildAComponent},
+  {path: 'login-dashboard', component: LoginDashboardComponent},
+  {path: 'login-login', component: LoginLoginComponent},
+  {
+    path: 'routing-demo',
+    component: RoutingDemoComponent,
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
+      { path: 'about', component: AboutComponent },
+      { path: 'home/news', component: NewsComponent },
+      { path: 'login', component: RoutingLoginComponent },
+      { path: 'dashboard', component: RoutingDashboardComponent },
+      { path: '**', component: NotfoundComponent}
+    ]
+  },
+
+  {path: '**', component: NotfoundComponent}
 ];
